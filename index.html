@@ -3,33 +3,99 @@
   <head>
     <meta charset="utf-8">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+    <title>HIAS Media Discussion Club</title>
     <style media="screen">
       body {
-        font-family: 'Lora', serif;
+        font-family: 'Montserrat', sans-serif;
+        margin: 0;
+        color: white;
+        background-color: #f5f5f5;
+      }
+      header {
+        width: 100%;
+        padding: 20px 0;
+        background: #2c5597;
+        border-bottom: 7px solid #e10367;
+      }
+      header #logo {
+        text-decoration: none;
+        color: inherit;
+        font-weight: bold;
+        text-align: center;
+        margin: 0 auto;
       }
       #main-container {
-        max-width: 1000px;
+        padding: 0 20px;
+      }
+      #main-page {
+        max-width: 992px;
         margin: auto;
         margin-top: 20px;
+        margin-bottom: 20px;
         padding: 30px 60px;
-        border-radius: 20px;
-        background-color: #eee;
+        border-radius: 5px;
+        border: 2px solid #ebebeb;
+
+        background-color: #fff;
+        color: #5e514d;
+      }
+      #main-page h2 { color: #2c5597; }
+      #main-page h3 { color: #2c5597; }
+      #main-page h4 { color: #2c5597; }
+      #current-form-embed iframe {
+        display: block;
+        margin: auto;
       }
     </style>
-    <title>Single Page Idea</title>
+    <script type="text/javascript">
+      function insertMarkdownIntoDivById(pathToMarkdown, divId) {
+        var endpoint = pathToMarkdown;
+        fetch(endpoint, {cache: "no-store"}).then(function(response) {
+          return response.text().then(function(text) {
+            document.getElementById(divId).innerHTML = marked(text);
+          });
+        });
+      }
+      function insertHtmlIntoDivById(pathToHtml, divId) {
+        var endpoint = pathToHtml;
+        fetch(endpoint, {cache: "no-store"}).then(function(response) {
+          return response.text().then(function(text) {
+            document.getElementById(divId).innerHTML = text;
+          });
+        });
+      }
+    </script>
   </head>
   <body>
+    <header>
+      <!-- <a id="logo" href="/">HIAS Media Discussion Club</a> -->
+      <h1 id="logo"><a id="logo" href="/">HIAS <span style="font-weight:normal;">Media Discussion Club</span></a></h1>
+    </header>
     <div id="main-container">
-      <script type="text/javascript">
-      var endpoint = "README.md";
-      fetch(endpoint, {cache: "no-store"}).then(function(response) {
-        return response.text().then(function(text) {
-          // document.body.innerHTML = marked(text);
-          document.getElementById("main-container").innerHTML = marked(text);
-        });
-      });
-      </script>
+    <div id="main-page">
+        <div class="intro">
+          <h2>What's this?</h2>
+          <p>I enjoyed last month's inaugural HIAS book club. It occurs to me that it might be interesting to meet to discuss other media as well (e.g. games, film/documentary, television, etc.). I proposed the game <a href="https://en.wikipedia.org/wiki/Papers,_Please">Papers, Please</a> (more info below) and it was suggested that something like this might work well mid-month (in between the main meetings to discuss the book club's <em>book</em> for the month).</p>
+          <p>If you'd be interested in meeting to discuss art in other media (relevant to HIAS' mission, of course), please read on and fill out the form at the bottom of the page. Though the first piece I'm suggesting here is a game, some of you who attended the first book club recommended certain films, documentaries and TV shows, which could definitely be the subject of future meetings. If there's sufficient interest, perhaps we can host mid-month meetings in the same WeWork space.</p>
+          <h2>Concept</h2>
+          <p>A book-club-style meeting to discuss art in other media that might be of interest to HIAS volunteers - games, film, documentaries, television, etc.</p>
+          <p>Meetings to be held once a month (or once every couple/few months, depending on interest and scheduling considerations). The goal would be to pick pieces that take about as much (or less) time to consume than a book (e.g. 4-10 hours).</p>
+        </div>
+        <div class="current">
+          <div id="current-desc"></div>
+        </div>
+        <div class="next">
+          <div id="next-desc"></div>
+          <div id="next-form-embed"></div>
+        </div>
+        <div id="current-form-embed"></div>
     </div>
+    </div>
+    <script type="text/javascript">
+      insertMarkdownIntoDivById('content/current-desc.md', 'current-desc');
+      insertMarkdownIntoDivById('content/next-desc.md', 'next-desc');
+      insertHtmlIntoDivById('content/current-form-embed.html', 'current-form-embed');
+    </script>
   </body>
 </html>
