@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
     <title>HIAS Media Discussion Club</title>
@@ -14,7 +15,8 @@
       }
       header {
         width: 100%;
-        padding: 20px 0;
+        padding: 20px;
+        box-sizing: border-box;
         background: #2c5597;
         border-bottom: 7px solid #e10367;
       }
@@ -27,9 +29,12 @@
       }
       #main-container {
         padding: 0 20px;
+        margin: auto;
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 992px;
       }
       #main-page {
-        max-width: 992px;
         margin: auto;
         margin-top: 20px;
         margin-bottom: 20px;
@@ -46,6 +51,81 @@
       #current-form-embed iframe {
         display: block;
         margin: auto;
+      }
+      #form-embed {
+        overflow: hidden;
+        padding-top: 120%;
+        position: relative;
+      }
+      #form-embed iframe {
+         border: 0;
+         height: 100%;
+         left: 0;
+         position: absolute;
+         top: 0;
+         width: 100%;
+      }
+      @media only screen and (max-width: 600px) {
+        #main-container {
+          padding: 0 10px;
+          line-height: 1.5;
+        }
+        #main-page {
+          margin-top: 10px;
+          margin-bottom: 10px;
+          padding: 10px 20px;
+        }
+      }
+      @media only screen and (max-width: 950px) {
+        #form-embed { padding-top: 140%; }
+      }
+      @media only screen and (max-width: 852px) {
+        #form-embed { padding-top: 160%; }
+      }
+      @media only screen and (max-width: 800px) {
+        #form-embed { padding-top: 180%; }
+      }
+      @media only screen and (max-width: 730px) {
+        #form-embed { padding-top: 200%; }
+      }
+      @media only screen and (max-width: 690px) {
+        #form-embed { padding-top: 220%; }
+      }
+      @media only screen and (max-width: 660px) {
+        #form-embed { padding-top: 240%; }
+      }
+      @media only screen and (max-width: 608px) {
+        #form-embed { padding-top: 260%; }
+      }
+      @media only screen and (max-width: 468px) {
+        #form-embed { padding-top: 280%; }
+      }
+      @media only screen and (max-width: 458px) {
+        #form-embed { padding-top: 320%; }
+      }
+      @media only screen and (max-width: 426px) {
+        #form-embed { padding-top: 360%; }
+      }
+      @media only screen and (max-width: 396px) {
+        #form-embed { padding-top: 400%; }
+      }
+      @media only screen and (max-width: 372px) {
+        #form-embed { padding-top: 440%; }
+      }
+      @media only screen and (max-width: 354px) {
+        #form-embed { padding-top: 500%; }
+      }
+      @media only screen and (max-width: 332px) {
+        #form-embed { padding-top: 550%; }
+      }
+      @media only screen and (max-width: 318px) {
+        #form-embed { padding-top: 600%; }
+      }
+      @media only screen and (max-width: 306px) {
+        #form-embed { padding-top: 650%; }
+      }
+      @media only screen and (max-width: 294px) {
+        #form-embed { padding-top: 700%; }
       }
     </style>
     <script type="text/javascript">
@@ -84,18 +164,21 @@
         </div>
         <div class="current">
           <div id="current-desc"></div>
+          <div id="current-form-embed"></div>
         </div>
         <div class="next">
           <div id="next-desc"></div>
           <div id="next-form-embed"></div>
         </div>
-        <div id="current-form-embed"></div>
+        <br>
+        <div id="form-embed"></div>
     </div>
     </div>
     <script type="text/javascript">
       insertMarkdownIntoDivById('content/current-desc.md', 'current-desc');
+      // insertHtmlIntoDivById('content/current-form-embed.html', 'current-form-embed');
       insertMarkdownIntoDivById('content/next-desc.md', 'next-desc');
-      insertHtmlIntoDivById('content/current-form-embed.html', 'current-form-embed');
+      insertHtmlIntoDivById('content/current-form-embed.html', 'form-embed');
     </script>
   </body>
 </html>
